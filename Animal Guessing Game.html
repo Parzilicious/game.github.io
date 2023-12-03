@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Modes</title>
+  <style link = "Final.css"></style>
+</head>
+<body>
+
+  <div id="Homepage" class="mode">
+    <button id="Play" onclick="play()">Play</button><br><br>
+    <button id="specdiff" value="easy" onclick="selectMode('easyMode')">Easy</button><br><br>
+    <button id="specdiff2" value="hard" onclick="selectMode('hardMode')">Hard</button><br><br>
+    <button id="specdiff3" value="impossible" onclick="selectMode('impoMode')">Impossible</button>
+  </div>
+
+  <div id="easyMode" class="mode">
+    <button id="Home" onclick="home()">Home</button><br>
+    <h2>Easy Mode</h2>
+    <button id="revealer" onclick="revealE()">Reveal Picture</button>
+    <img id="randompic" src="" alt="Animal to Guess">
+    <div id="choices">
+      <button id="choice1" onclick="checkAnswer(1)"></button>
+      <button id="choice2" onclick="checkAnswer(2)"></button>
+      <button id="choice3" onclick="checkAnswer(3)"></button>
+    </div>
+  </div>
+
+  <div id="hardMode" class="mode">
+    <button id="Home" onclick="home()">Home</button><br>
+    <div class="align">
+      <h2>Hard Mode</h2>
+      <button id="revealer2" onclick="revealH()">Reveal Picture</button>
+      <img id="randompic2" src="" alt="Animal to Guess">
+      <div id="choices">
+        <button id="choice1" onclick="checkAnswer(1)"></button>
+        <button id="choice2" onclick="checkAnswer(2)"></button>
+        <button id="choice3" onclick="checkAnswer(3)"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="impoMode" class="mode">
+    <button id="Home" onclick="home()">Home</button><br>
+    <h2>Impossible Mode</h2>
+    <button id="revealer3" onclick="revealI()">Reveal Picture</button>
+    <img id="randompic3" src="" alt="Animal to Guess">
+    <div id="choices">
+      <button id="choice1" onclick="checkAnswer(1)"></button>
+      <button id="choice2" onclick="checkAnswer(2)"></button>
+      <button id="choice3" onclick="checkAnswer(3)"></button>
+    </div>
+  </div>
+
+  <script src = "Final.js"></script>
+</body>
+</html>
