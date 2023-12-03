@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Modes</title>
-  <link rel="stylesheet" href="temp1.css">
+  <link rel="stylesheet" href="Final.css">
 </head>
 <body>
 
@@ -13,6 +13,7 @@
     <div class="logo-container">
       <img class="group-logo" src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.15752-9/399790816_1215787206476125_1094829681876521911_n.png?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFGOAvQQUpdVOsw8HFu95ko073gOVYLfvXTveA5Vgt-9aTFH7P6GI7PqtJ_Ksfx6r_mxko-9XAt8pmYq92oPLMP&_nc_ohc=1NZVK1UYUucAX8rRqNW&_nc_ht=scontent.fmnl8-2.fna&cb_e2o_trans=q&oh=03_AdR0W9djX_ZYdbgv9CgsISSHL10BSAhk7TBniF8DnIp6_A&oe=658F6E55" alt="">
       <h3>Group OJEJ</h3>
+      <p id="points">Points: 0</p>
     </div>
 
       <div class="title-container">  
@@ -24,11 +25,10 @@
               <img class="logo-1" src="https://static.vecteezy.com/system/resources/previews/013/373/902/original/african-animals-silhouettes-set-giraffe-elephant-leopard-deer-rhinoceros-ostrich-zebra-lion-illustration-free-vector.jpg" alt="">
           </div>
       </div>
-      <p id="afternagguess" style="display: none;">bruh</p>
 
       <div id="Homepage" class="mode">
+        <p id="ans">Please select a dificulty and press Play.</p>
         <button class="play" id="Play" onclick="play()"> <b>Play</b></button>
-        <p id="points">Points: 0</p>
         <div class="modes-container">
           <button class="button" id="specdiff" value="easy" onclick="selectMode('eMode')"><b>Easy</b></button><br><br>
           <button class="button" id="specdiff2" value="hard" onclick="selectMode('nMode')"><b>Normal</b></button><br><br>
@@ -42,8 +42,8 @@
       <button id="Home" onclick="home()">Home</button><br>
       <h2>Easy Mode</h2>
       <button id="revealer" onclick="revealE()">Reveal Picture</button>
-      <p id="par">PRESS THE BUTTON ABOVE TO START</p>
-      <img id="randompic" src=""  style="display: none;">
+      <p id="par"><b>PRESS THE BUTTON ABOVE TO START</b></p>
+      <img id="randompic" src="" style="display: none;">
       <div id="choices">
         <button id="choice1" onclick="checkAnswer(1)"></button>
         <button id="choice2" onclick="checkAnswer(2)"></button>
@@ -55,7 +55,7 @@
       <button id="Home" onclick="home()">Home</button><br>
         <h2>Normal Mode</h2>
         <button id="revealer2" onclick="revealN()" >Reveal Picture</button>
-        <p id="par">PRESS THE BUTTON ABOVE TO START</p>
+        <p id="par"><b>PRESS THE BUTTON ABOVE TO START</b></p>
         <img id="randompic2" src="" style="display: none;">
         <div id="choices">
           <button id="choice1" onclick="checkAnswer(1)"></button>
@@ -68,7 +68,7 @@
       <button id="Home" onclick="home()">Home</button><br>
           <h2>Hard Mode</h2>
           <button id="revealer3" onclick="revealH()">Reveal Picture</button>
-          <p id="par">PRESS THE BUTTON ABOVE TO START</p>
+          <p id="par"><b>PRESS THE BUTTON ABOVE TO START</b></p>
           <img id="randompic3" src="" style="display: none;">
           <div id="choices">
             <button id="choice1" onclick="checkAnswer(1)"></button>
@@ -111,9 +111,9 @@
         }
 
       document.getElementById('Homepage').style.display = 'none';
-      var content = document.getElementById(selectedMode).innerHTML;
-      document.body.innerHTML = content;
-      var newStyles = `
+      var page = document.getElementById(selectedMode).innerHTML;
+      document.body.innerHTML = page;
+      var newStyle = `
       body {
             background: linear-gradient(180deg, #212529, #343a40, #495057, #212529);
              min-height: 100vh;
@@ -124,6 +124,7 @@
           }
           
           p{
+            font-size: 50px;
             color: yellow;
           }
 
@@ -176,12 +177,16 @@
             background-color: white; 
             color: black; 
             }
+
+            #choices{
+              display: none;
+            }
             `;
 
       var styleElement = document.createElement('style');
-      styleElement.innerHTML = newStyles;
+      styleElement.innerHTML = newStyle;
 
-      document.head.appendChild(styleElement);document.style.innerHTML = newStyles;
+      document.head.appendChild(styleElement);document.style.innerHTML = newStyle;
 
       }
 
@@ -189,32 +194,36 @@
       function home() {
       
       selectedMode = "";
+      var resultParagraph = document.getElementById("afternagguess");
       document.head.innerHTML = styles;
       document.body.innerHTML = body;
 
-      document.getElementById("points").innerHTML = 'Points: ' + count;
-
       if(count >= 1){
-        document.getElementById("afternagguess").style.display = flex;
+      document.getElementById("points").innerHTML = 'Points: ' + count;
+      document.getElementById("ans").innerHTML = say;
       }
+        
 
       }
 
     var randompicE;
     var randompicN;
-    var randompiH;
+    var randompicH;
     var ranchoice;
     
     function revealE(){
     var par = document.getElementById("par");
     par.style.display = "none";
     randompic.style.display = "block";
+    document.getElementById("choices").style.display = "block";
     var pictureArray = [
             "https://i.pinimg.com/474x/4b/95/ed/4b95ede28bbf7b683caa79d6896599f8.jpg",
             "https://static.vecteezy.com/system/resources/previews/013/209/428/non_2x/simple-dog-silhouette-illustration-free-vector.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCkdsJhPt7iuj9VIfT9nEEsoLH7pHestHvw&usqp=CAU",
             "https://clipart-library.com/images/5cR9Axdca.jpg",
-            "https://t3.ftcdn.net/jpg/02/89/76/76/360_F_289767655_HVfxlEKu6YwR9qBO6DOPB6sPwDha6UqD.jpg"
+            "https://t3.ftcdn.net/jpg/02/89/76/76/360_F_289767655_HVfxlEKu6YwR9qBO6DOPB6sPwDha6UqD.jpg",
+            "https://t4.ftcdn.net/jpg/01/18/06/43/360_F_118064389_1LHK8YgS0xnX4sqisLovEyiav3ddE0A5.jpg",
+            "https://i.pinimg.com/originals/df/fc/55/dffc5520b96dc2a818c21b3e5e331f84.png"
         ];
 
         var randomizer = Math.floor(Math.random() * pictureArray.length);
@@ -237,6 +246,12 @@
         else if (randomizer === 4){
            ranchoice = "Fish";
         }
+        else if (randomizer === 5){
+           ranchoice = "Horse";
+        }
+        else if (randomizer === 6){
+           ranchoice = "Lion";
+        }
 
         Choices(1);
     }
@@ -245,12 +260,16 @@
     var par = document.getElementById("par");
     par.style.display = "none";
     randompic2.style.display = "block";
+    document.getElementById("choices").style.display = "block";
     var pictureArray = [
-            "https://media.istockphoto.com/id/1596679531/vector/silhouette-of-abstract-giraffe-with-exclamation-mark-as-line-drawing.jpg?s=612x612&w=0&k=20&c=LymhNjbfD0eEIfBX4ShQO2PGYRD7_lEdK7ThH3_iZjg=",
-            "https://m.media-amazon.com/images/I/410AIFoJqXL.jpg",
-            "https://thumbs.dreamstime.com/z/kangaroo-abstract-line-art-clip-art-design-white-background-97170625.jpg",
-            "https://st2.depositphotos.com/2172759/7628/v/450/depositphotos_76282513-stock-illustration-stylized-monkey-illustration-isolated-on.jpg",
-            "https://t4.ftcdn.net/jpg/00/19/92/69/360_F_19926974_mNVBBh9v5DQTOMjhxk4RNlbYvGkuqSiT.jpg"
+            "https://i.pinimg.com/736x/b2/84/c4/b284c46bb51a9f5ed5a4bc815f5d63e7.jpg",
+            "https://png.pngtree.com/png-clipart/20210620/original/pngtree-tiger-silhouette-happy-png-image_6439056.jpg",
+            "https://www.shutterstock.com/image-illustration/isolated-image-lynx-drawing-silhouette-260nw-1858605136.jpg",
+            "https://cdn1.vectorstock.com/i/1000x1000/24/30/coyote-silhouette-vector-432430.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3tPq4R40R24UdqrDq_nmpNRaZF7zB-s3qdGlTSu2i7Kfi6kdzVOMiQnrZ8pB2do4Hfws&usqp=CAU",
+            "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Silhouettes-PNG/Moose_Silhouette_PNG_Clip_Art_Image.png?m=1488081302",
+            "https://i.pinimg.com/736x/20/d2/82/20d2824c0412cfa577a8883d353449af.jpg"
+
         ];
 
         var randomizer = Math.floor(Math.random() * pictureArray.length);
@@ -259,19 +278,25 @@
         document.getElementById("revealer2").style.display = "none";
 
         if(randomizer === 0){
-           ranchoice = "Girrafe";
+           ranchoice = "Cheetah";
         }
         else if (randomizer === 1){
-           ranchoice = "Shark";
+           ranchoice = "Tiger";
         }
         else if (randomizer === 2){   
-           ranchoice = "Kangaroo";        
+           ranchoice = "Lynx";        
         }
         else if (randomizer === 3){ 
-           ranchoice = "Monkey";          
+           ranchoice = "Coyote";          
         }
         else if (randomizer === 4){
-           ranchoice = "Hyena";
+           ranchoice = "Leopard";
+        }
+        else if (randomizer === 5){
+           ranchoice = "Moose";
+        }
+        else if (randomizer === 6){
+           ranchoice = "Elk";
         }
 
         Choices(2);
@@ -282,33 +307,42 @@
     var par = document.getElementById("par");
     par.style.display = "none";
     randompic3.style.display = "block";
+    document.getElementById("choices").style.display = "block";
     var pictureArray = [
-            "https://img.freepik.com/premium-vector/coloring-pages-books-kids-cute-worm-cartoon-black-white_50699-848.jpg",
-            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
-            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
-            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
-            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg"
+            "https://thumbs.dreamstime.com/b/standing-axolotl-silhouette-front-view-isolated-white-background-193250367.jpg",
+            "https://st3.depositphotos.com/6305928/35405/v/450/depositphotos_354055300-stock-illustration-black-silhouette-atlantic-puffin-bird.jpg",
+            "https://i.etsystatic.com/29160928/r/il/2c24a3/4291279122/il_fullxfull.4291279122_bvu1.jpg",
+            "https://cdn5.vectorstock.com/i/1000x1000/72/49/muntjac-deer-silhouette-vector-37057249.jpg",
+            "https://w7.pngwing.com/pngs/303/176/png-transparent-whiskers-silhouette-chinchilla-black-and-white-silhouette-mammal-animals-cat-like-mammal.png",
+            "https://i.pinimg.com/originals/ee/03/e2/ee03e250421d7ab281c22435acb8826d.png",
+            "https://i.pngimg.me/thumb/f/720/5634752082083840.jpg"
         ];
 
         var randomizer = Math.floor(Math.random() * pictureArray.length);
-        var randompicE = document.getElementById("randompic3");
-        randompicE.src = pictureArray[randomizer];
+        var randompicH = document.getElementById("randompic3");
+        randompicH.src = pictureArray[randomizer];
         document.getElementById("revealer3").style.display = "none";
 
         if(randomizer === 0){
-           ranchoice = "Worm";
+           ranchoice = "Axolotl";
         }
         else if (randomizer === 1){
-           ranchoice = "Worm";
+           ranchoice = "Puffin";
         }
         else if (randomizer === 2){   
-           ranchoice = "Worm";        
+           ranchoice = "Pangolin";        
         }
         else if (randomizer === 3){ 
-           ranchoice = "Worm";          
+           ranchoice = "Muntjac";          
         }
         else if (randomizer === 4){
-           ranchoice = "Worm";
+           ranchoice = "Chinchilla";
+        }
+        else if (randomizer === 5){
+           ranchoice = "Narwhal";
+        }
+        else if (randomizer === 6){
+           ranchoice = "Cassowary";
         }
 
         Choices(3); 
@@ -323,21 +357,20 @@
     }
 
     function Choices(num) {
+      var choices;
       if(num === 1){
-        var choices = ["Worm", "Dog", "Cat", "Bird", "Fish", "Elephant", "Lion", "Tiger", "Horse", "Monkey"];
+        choices = ["Worm", "Dog", "Cat", "Bird", "Fish", "Elephant", "Lion", "Tiger", "Horse", "Monkey"];
       }
       else if(num === 2){
-        var choices = ["Giraffe", "Horse", "Kangaroo", "Dolphin", "Hyena", "Rabbit", "Shark", "Deer", "Tiger", "Monkey"];
+        choices = ['Cheetah','Leopard','Panther','Lion','Tiger','Jaguar','Cougar','Deer','Lynx','Elk','Coyote','Moose'];
       }
       else if(num === 3){
-        var choices = ["Worm", "Dog", "Cat", "Bird", "Fish", "Elephant", "Lion", "Tiger", "Horse", "Monkey"];
+        choices = ["Axolotl", "Cassowary", "Muntjac", "Narwhal", "Chinchilla", "Coelacanth", "Pangolin", "Capybara", "Potoo", "Puffin"];
       }
 
         var removeran = choices.indexOf(ranchoice);
 
-        if (removeran !== -1) {
-            choices.splice(removeran, 1);
-        }
+        choices.splice(removeran, 1);
 
         var choice2 = choices.slice(0, 2);
 
@@ -348,25 +381,26 @@
         document.getElementById("choice1").innerHTML = choice3[0];
         document.getElementById("choice2").innerHTML = choice3[1];
         document.getElementById("choice3").innerHTML = choice3[2];
-
     }
+
+    var say;
 
     function checkAnswer(num) {
       var choice = document.getElementById("choice" + num).innerHTML;
-      var resultParagraph = document.getElementById("afternagguess");
 
       if (choice === ranchoice) {
         count++;
+        say = 'Your last guess was correct, You earned 1 Point';
         home();
       }
       else{
+        say = 'Your last guess was wrong, Unfortunately no points for you';
         home();
       }
     }
-
-
 
   </script>
 
 </body>
 </html>
+
