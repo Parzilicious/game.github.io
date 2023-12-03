@@ -4,55 +4,369 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Modes</title>
-  <style link = "Final.css"></style>
+  <link rel="stylesheet" href="temp1.css">
 </head>
 <body>
 
-  <div id="Homepage" class="mode">
-    <button id="Play" onclick="play()">Play</button><br><br>
-    <button id="specdiff" value="easy" onclick="selectMode('easyMode')">Easy</button><br><br>
-    <button id="specdiff2" value="hard" onclick="selectMode('hardMode')">Hard</button><br><br>
-    <button id="specdiff3" value="impossible" onclick="selectMode('impoMode')">Impossible</button>
-  </div>
+  <div class="frontpage-container">
 
-  <div id="easyMode" class="mode">
-    <button id="Home" onclick="home()">Home</button><br>
-    <h2>Easy Mode</h2>
-    <button id="revealer" onclick="revealE()">Reveal Picture</button>
-    <img id="randompic" src="" alt="Animal to Guess">
-    <div id="choices">
-      <button id="choice1" onclick="checkAnswer(1)"></button>
-      <button id="choice2" onclick="checkAnswer(2)"></button>
-      <button id="choice3" onclick="checkAnswer(3)"></button>
+    <div class="logo-container">
+      <img class="group-logo" src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.15752-9/399790816_1215787206476125_1094829681876521911_n.png?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFGOAvQQUpdVOsw8HFu95ko073gOVYLfvXTveA5Vgt-9aTFH7P6GI7PqtJ_Ksfx6r_mxko-9XAt8pmYq92oPLMP&_nc_ohc=1NZVK1UYUucAX8rRqNW&_nc_ht=scontent.fmnl8-2.fna&cb_e2o_trans=q&oh=03_AdR0W9djX_ZYdbgv9CgsISSHL10BSAhk7TBniF8DnIp6_A&oe=658F6E55" alt="">
+      <h3>Group OJEJ</h3>
     </div>
-  </div>
 
-  <div id="hardMode" class="mode">
-    <button id="Home" onclick="home()">Home</button><br>
-    <div class="align">
-      <h2>Hard Mode</h2>
-      <button id="revealer2" onclick="revealH()">Reveal Picture</button>
-      <img id="randompic2" src="" alt="Animal to Guess">
+      <div class="title-container">  
+          <div class="title">
+              <h1>Animal<br>Guessing<br>Game</h1>
+          </div>  
+
+          <div class="logo">
+              <img class="logo-1" src="https://static.vecteezy.com/system/resources/previews/013/373/902/original/african-animals-silhouettes-set-giraffe-elephant-leopard-deer-rhinoceros-ostrich-zebra-lion-illustration-free-vector.jpg" alt="">
+          </div>
+      </div>
+      <p id="afternagguess" style="display: none;">bruh</p>
+
+      <div id="Homepage" class="mode">
+        <button class="play" id="Play" onclick="play()"> <b>Play</b></button>
+        <p id="points">Points: 0</p>
+        <div class="modes-container">
+          <button class="button" id="specdiff" value="easy" onclick="selectMode('eMode')"><b>Easy</b></button><br><br>
+          <button class="button" id="specdiff2" value="hard" onclick="selectMode('nMode')"><b>Normal</b></button><br><br>
+          <button class="button" id="specdiff3" value="impossible" onclick="selectMode('hMode')"><b>Hard</b></button>
+        </div>
+    </div>
+
+  </div>
+  <div class="game-container">
+    <div id="eMode" class="mode">
+      <button id="Home" onclick="home()">Home</button><br>
+      <h2>Easy Mode</h2>
+      <button id="revealer" onclick="revealE()">Reveal Picture</button>
+      <p id="par">PRESS THE BUTTON ABOVE TO START</p>
+      <img id="randompic" src=""  style="display: none;">
       <div id="choices">
         <button id="choice1" onclick="checkAnswer(1)"></button>
         <button id="choice2" onclick="checkAnswer(2)"></button>
         <button id="choice3" onclick="checkAnswer(3)"></button>
       </div>
     </div>
-  </div>
 
-  <div id="impoMode" class="mode">
-    <button id="Home" onclick="home()">Home</button><br>
-    <h2>Impossible Mode</h2>
-    <button id="revealer3" onclick="revealI()">Reveal Picture</button>
-    <img id="randompic3" src="" alt="Animal to Guess">
-    <div id="choices">
-      <button id="choice1" onclick="checkAnswer(1)"></button>
-      <button id="choice2" onclick="checkAnswer(2)"></button>
-      <button id="choice3" onclick="checkAnswer(3)"></button>
+    <div id="nMode" class="mode">
+      <button id="Home" onclick="home()">Home</button><br>
+        <h2>Normal Mode</h2>
+        <button id="revealer2" onclick="revealN()" >Reveal Picture</button>
+        <p id="par">PRESS THE BUTTON ABOVE TO START</p>
+        <img id="randompic2" src="" style="display: none;">
+        <div id="choices">
+          <button id="choice1" onclick="checkAnswer(1)"></button>
+          <button id="choice2" onclick="checkAnswer(2)"></button>
+          <button id="choice3" onclick="checkAnswer(3)"></button>
+        </div> 
+    </div>
+
+    <div id="hMode" class="mode">
+      <button id="Home" onclick="home()">Home</button><br>
+          <h2>Hard Mode</h2>
+          <button id="revealer3" onclick="revealH()">Reveal Picture</button>
+          <p id="par">PRESS THE BUTTON ABOVE TO START</p>
+          <img id="randompic3" src="" style="display: none;">
+          <div id="choices">
+            <button id="choice1" onclick="checkAnswer(1)"></button>
+            <button id="choice2" onclick="checkAnswer(2)"></button>
+            <button id="choice3" onclick="checkAnswer(3)"></button>
+          </div>
     </div>
   </div>
+  <script>
+    var selectedMode = "";
+    var body = document.body.innerHTML;
+    var styles = document.head.innerHTML;
+    var count = 0;
 
-  <script src = "Final.js"></script>
+    function selectMode(mode) {
+
+      document.getElementById("specdiff").style.backgroundColor = "";
+      document.getElementById("specdiff2").style.backgroundColor = "";
+      document.getElementById("specdiff3").style.backgroundColor = "";
+
+      selectedMode = mode;
+
+      if (selectedMode === "eMode") {
+        document.getElementById("specdiff");
+      } else if (selectedMode === "nMode") {
+        document.getElementById("specdiff2");
+      } else if (selectedMode === "hMode") {
+        document.getElementById("specdiff3");
+      }
+
+
+      return;
+    }
+
+      function play(){      
+
+        if (selectedMode === ""){
+          alert("Please Select a Mode Before Playing!!");
+          return;
+        }
+
+      document.getElementById('Homepage').style.display = 'none';
+      var content = document.getElementById(selectedMode).innerHTML;
+      document.body.innerHTML = content;
+      var newStyles = `
+      body {
+            background: linear-gradient(180deg, #212529, #343a40, #495057, #212529);
+             min-height: 100vh;
+              font-family: 'Helvetica', sans-serif;
+              display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          p{
+            color: yellow;
+          }
+
+          button {
+            padding: 1em;
+            width: 400px;
+            border-radius: 100px;
+            margin: 5em 10px; 
+            height: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Add color transition */
+            background-color: #212529;
+            color: white;
+            border: 2px solid white;
+          }
+          
+          img {
+            height: 400px;
+            width: 800px;
+            object-fit: contain;
+            border: 2px solid white;
+            border-radius: 5%;
+          }
+
+          h2 {
+            font-size: 50px;
+            font-family: Arial;
+            color: white;
+          }
+
+          #easyMode button:not(#Home) {
+            margin: 10px;
+            }
+
+            #Home {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            margin-top: 1em !important;
+            }
+            
+            .button:hover, #Play:hover {
+            background-color: black; 
+            color: white; 
+            }
+
+            button:hover, .modes-container:hover {
+            background-color: white; 
+            color: black; 
+            }
+            `;
+
+      var styleElement = document.createElement('style');
+      styleElement.innerHTML = newStyles;
+
+      document.head.appendChild(styleElement);document.style.innerHTML = newStyles;
+
+      }
+
+
+      function home() {
+      
+      selectedMode = "";
+      document.head.innerHTML = styles;
+      document.body.innerHTML = body;
+
+      document.getElementById("points").innerHTML = 'Points: ' + count;
+
+      if(count >= 1){
+        document.getElementById("afternagguess").style.display = flex;
+      }
+
+      }
+
+    var randompicE;
+    var randompicN;
+    var randompiH;
+    var ranchoice;
+    
+    function revealE(){
+    var par = document.getElementById("par");
+    par.style.display = "none";
+    randompic.style.display = "block";
+    var pictureArray = [
+            "https://i.pinimg.com/474x/4b/95/ed/4b95ede28bbf7b683caa79d6896599f8.jpg",
+            "https://static.vecteezy.com/system/resources/previews/013/209/428/non_2x/simple-dog-silhouette-illustration-free-vector.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCkdsJhPt7iuj9VIfT9nEEsoLH7pHestHvw&usqp=CAU",
+            "https://clipart-library.com/images/5cR9Axdca.jpg",
+            "https://t3.ftcdn.net/jpg/02/89/76/76/360_F_289767655_HVfxlEKu6YwR9qBO6DOPB6sPwDha6UqD.jpg"
+        ];
+
+        var randomizer = Math.floor(Math.random() * pictureArray.length);
+        var randompicE = document.getElementById("randompic");
+        randompicE.src = pictureArray[randomizer];
+        document.getElementById("revealer").style.display = "none";
+
+        if(randomizer === 0){
+           ranchoice = "Elephant";
+        }
+        else if (randomizer === 1){
+           ranchoice = "Dog";
+        }
+        else if (randomizer === 2){   
+           ranchoice = "Cat";        
+        }
+        else if (randomizer === 3){ 
+           ranchoice = "Bird";          
+        }
+        else if (randomizer === 4){
+           ranchoice = "Fish";
+        }
+
+        Choices(1);
+    }
+
+    function revealN() {
+    var par = document.getElementById("par");
+    par.style.display = "none";
+    randompic2.style.display = "block";
+    var pictureArray = [
+            "https://media.istockphoto.com/id/1596679531/vector/silhouette-of-abstract-giraffe-with-exclamation-mark-as-line-drawing.jpg?s=612x612&w=0&k=20&c=LymhNjbfD0eEIfBX4ShQO2PGYRD7_lEdK7ThH3_iZjg=",
+            "https://m.media-amazon.com/images/I/410AIFoJqXL.jpg",
+            "https://thumbs.dreamstime.com/z/kangaroo-abstract-line-art-clip-art-design-white-background-97170625.jpg",
+            "https://st2.depositphotos.com/2172759/7628/v/450/depositphotos_76282513-stock-illustration-stylized-monkey-illustration-isolated-on.jpg",
+            "https://t4.ftcdn.net/jpg/00/19/92/69/360_F_19926974_mNVBBh9v5DQTOMjhxk4RNlbYvGkuqSiT.jpg"
+        ];
+
+        var randomizer = Math.floor(Math.random() * pictureArray.length);
+        var randompicN = document.getElementById("randompic2");
+        randompicN.src = pictureArray[randomizer];
+        document.getElementById("revealer2").style.display = "none";
+
+        if(randomizer === 0){
+           ranchoice = "Girrafe";
+        }
+        else if (randomizer === 1){
+           ranchoice = "Shark";
+        }
+        else if (randomizer === 2){   
+           ranchoice = "Kangaroo";        
+        }
+        else if (randomizer === 3){ 
+           ranchoice = "Monkey";          
+        }
+        else if (randomizer === 4){
+           ranchoice = "Hyena";
+        }
+
+        Choices(2);
+      
+    }
+
+    function revealH() {
+    var par = document.getElementById("par");
+    par.style.display = "none";
+    randompic3.style.display = "block";
+    var pictureArray = [
+            "https://img.freepik.com/premium-vector/coloring-pages-books-kids-cute-worm-cartoon-black-white_50699-848.jpg",
+            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
+            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
+            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg",
+            "https://thumbs.dreamstime.com/b/creative-quirky-line-drawing-cartoon-worm-original-151187049.jpg"
+        ];
+
+        var randomizer = Math.floor(Math.random() * pictureArray.length);
+        var randompicE = document.getElementById("randompic3");
+        randompicE.src = pictureArray[randomizer];
+        document.getElementById("revealer3").style.display = "none";
+
+        if(randomizer === 0){
+           ranchoice = "Worm";
+        }
+        else if (randomizer === 1){
+           ranchoice = "Worm";
+        }
+        else if (randomizer === 2){   
+           ranchoice = "Worm";        
+        }
+        else if (randomizer === 3){ 
+           ranchoice = "Worm";          
+        }
+        else if (randomizer === 4){
+           ranchoice = "Worm";
+        }
+
+        Choices(3); 
+    }
+
+    function randomizer(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function Choices(num) {
+      if(num === 1){
+        var choices = ["Worm", "Dog", "Cat", "Bird", "Fish", "Elephant", "Lion", "Tiger", "Horse", "Monkey"];
+      }
+      else if(num === 2){
+        var choices = ["Giraffe", "Horse", "Kangaroo", "Dolphin", "Hyena", "Rabbit", "Shark", "Deer", "Tiger", "Monkey"];
+      }
+      else if(num === 3){
+        var choices = ["Worm", "Dog", "Cat", "Bird", "Fish", "Elephant", "Lion", "Tiger", "Horse", "Monkey"];
+      }
+
+        var removeran = choices.indexOf(ranchoice);
+
+        if (removeran !== -1) {
+            choices.splice(removeran, 1);
+        }
+
+        var choice2 = choices.slice(0, 2);
+
+        var choice3 = [...choice2, ranchoice];
+
+        choice3 = randomizer(choice3);
+ 
+        document.getElementById("choice1").innerHTML = choice3[0];
+        document.getElementById("choice2").innerHTML = choice3[1];
+        document.getElementById("choice3").innerHTML = choice3[2];
+
+    }
+
+    function checkAnswer(num) {
+      var choice = document.getElementById("choice" + num).innerHTML;
+      var resultParagraph = document.getElementById("afternagguess");
+
+      if (choice === ranchoice) {
+        count++;
+        home();
+      }
+      else{
+        home();
+      }
+    }
+
+
+
+  </script>
+
 </body>
 </html>
